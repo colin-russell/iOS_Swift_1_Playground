@@ -49,9 +49,9 @@ let interestingNumbers = [
     "Fibonacci": [1, 1, 2, 3, 5, 8],
     "Square": [1, 4, 9, 16, 25],
 ]
-for (kind, numbers) in interestingNumbers {
+//for (kind, numbers) in interestingNumbers {
     
-}
+//}
 
 /*:
  - Callout(Challenge):

@@ -8,22 +8,36 @@
  */
 protocol ShapeProtocol {
     var numberOfSides: Int { get set }
+    var colour: String { get set }
+    init (colour: String)
     func shapeDescription()
+    func shapeArea()
 }
 
 /*:
  This 'Square' class conforms to the 'ShapeProtocol' and defines the number of sides for this shape and it has the shapeDescription method inside.
  */
 class Square: ShapeProtocol {
+    
     var numberOfSides: Int
+    var colour: String
     
     init(){
         self.numberOfSides = 4
+        self.colour = "blue"
+    }
+    
+    required init(colour: String) {
+        self.numberOfSides = 4
+        self.colour = colour
     }
     
     func shapeDescription() {
         
         print("This is a square")
+    }
+    func shapeArea() {
+        print("The area is:")
     }
 }
 
@@ -31,22 +45,17 @@ class Square: ShapeProtocol {
  - Experiment:
  Add a new function in our 'ShapeProtocol' that should calculate the area of its shape. Make sure you implement it in our 'Square' class as well.
  */
-
+// 👍
 /*:
  - Experiment:
  Add a new property in our 'ShapeProtocol' of type String that indicates the colour of this shape.
  */
-
+// 👍
 /*:
  - Experiment:
  We can also declare a custom initializer within our 'ShapeProtocol' that any class must have present. Create an initializer that takes in a colour as a parameter.
  */
-
-/*:
- - Callout(Challenge):
- Define a person protocol with name, gender, age and add a custom initializer to set all the properties and a function to print a description of this person. Create a 'Student' class that conforms to this protocol and print the description of this student using its name.
- */
-
+// 👍
 /*:
  ## Extensions
  Extensions are a way to add additional functions to an existing class, struct or enum.
@@ -74,7 +83,17 @@ var mySquaredDoubleValue = myDoubleValue.square()
  - Experiment:
  Try adding the 'square' function to the `Float` type
  */
-
+// This is declaring an extension on the Float class
+extension Float {
+    
+    // This 'square' function takes its own value and multiples it by itself, then returns the new value
+    func square() -> Float {
+        
+        return self * self
+    }
+}
+var myFloatValue: Float = 1.1
+var mySquaredFloatValue = myFloatValue.square()
 /*:
  We are going to add a few extensions to several classes that you could potentially use for your future projects to make things more convenient.
  */
