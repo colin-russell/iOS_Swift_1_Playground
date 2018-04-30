@@ -42,23 +42,55 @@ func sayHello(toPerson: String) -> String{
  - Experiment:
  Try calling all of the functions above. They all have the same function name, but the compiler doesn't complain. Can you think of why this might be?
  */
-
+//print(sayHello(toPerson: "colin"))
+//sayHello(toPerson: "Bob")
+//var helloString = sayHello(toPerson: "Colin")
+//print("hello string \(helloString)")
 /*:
  - Experiment:
  Try creating your own function that accepts two parameters of any type you choose. Have the function print out the two parameters and test your function.
  */
-
+func twoParam(one: String, two: String) {
+    print(one)
+    print(two)
+}
+twoParam(one: "one parameter", two: "two parameter")
 /*:
  - Callout(Challenge):
  Create four separate functions to add, subtract, multiple, and divide with two parameters given to it and returns a number result. Try testing each one afterwards.
  
  */
+func add(x: Int, y: Int) -> Int {
+    return x+y
+}
+func subtract(x: Int, y: Int) -> Int {
+    return x-y
+}
+func multiply(x: Int, y: Int) -> Int {
+    return x*y
+}
+func divide(x: Double, y: Double) -> Double {
+    return x/y
+}
 
+print("add 2+5 = \(add(x: 2, y: 5))")
+print("subtract 2-5 = \(subtract(x: 2, y: 5))")
+print("multiply 2*5 = \(multiply(x: 2, y: 5))")
+print("divide 2/5 = \(divide(x: 2, y: 5))")
 /*:
  - Callout(Challenge):
  Create your own 'reverse' function that takes in an array of Int, reverses the order of the array, and returns the newly reversed array of Int. The array class has its own 'reverse' method, but do not use it for this challenge.
  */
+func reverse(array: [Int]) -> [Int] {
+    var reverseArray: [Int] = []
+    for i in 0..<array.count {
+        reverseArray.insert(array[i], at: 0)
+    }
+    return reverseArray
+}
 
+var newArray = [1, 2, 3, 4, 5]
+print(reverse(array: newArray))
 /*:
  ## Closures
  
@@ -117,17 +149,27 @@ var sayHelloClosureWithReturn = { (name: String) -> String in
  - Experiment:
  Try calling all of the closures above. What do you notice that is different from calling a function?
  */
-
-/*:
- - Experiment:
- Try creating your own closure that accepts two parameters of any type you choose. Have the closure print out the two parameters and test your closure.
- */
-
+sayHelloClosureToPerson("Colin")
+sayHelloClosure()
+var closureString = sayHelloClosureWithReturn("Sally")
+print(closureString)
+// you don't have to name the parameter when working with closures
 /*:
  - Experiment:
  Declare a variable with an explicit closure type: `(String) -> (String)`. This closure type says it takes one parameter of type String and returns a variable of type String.
  */
+var explicitClosure = { (something: String) -> String in
+    return "this is \(something)"
+}
 
+var twoParams = { (one: String, two: String) -> () in
+    print(one)
+    print(two)
+}
+func closureFunc(closure: ()) {
+    print("did stuff")
+}
+closureFunc(closure: twoParam(one: "one", two: "two"))
 /*:
  - Callout(Challenge):
  Create a closure with at least two parameters of your choice and decide whether or not it returns anything. Then create a function that takes in your closure as a parameter and one additional parameter of your choice.
