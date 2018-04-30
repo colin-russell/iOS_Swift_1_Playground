@@ -1,19 +1,9 @@
 //: [Previous](@previous)
-/*:
- ## Class and Struct
- 
- Classes are a way to group together common data together. You can think of them as a 'blueprint' for creating 'objects'. Structs are similar but they cannot be subclassed and any instance of them are passed by value NOT by reference.
- 
- - Note:
- Classes and Structs will be defined in a single file and will be made available for other code to use. In Objective-C, you had to define your class and structs in a header file and an implementation file. In Swift, we've only got one file to worry about :).
- */
-/*:
- Here we declare a class by using the `'class'` keyword and then the name of the class. Within the braces we are free to add properties and new methods for class.
- */
 class ShapeClass {
     var numberOfSides = 0
+    var name = "shape name"
     func description() -> String {
-        return "A shape with \(numberOfSides) sides."
+        return "A shape called \(name) with \(numberOfSides) sides."
     }
 }
 /*:
@@ -30,14 +20,15 @@ struct ShapeStruct {
  - Experiment:
  Update the ShapeClass and add a new property 'name'. Also, update the description method to include the name when it prints.
  */
-
-
+// see above
 /*:
  - Experiment:
  Try creating an instance of the ShapeClass. We can do this by writing the class name then putting parentheses '()' after the class name. Assign it to a declared variable and try setting the variables 'numberofSides' and 'name' and calling the 'description' method.
  */
-
-
+var shape = ShapeClass()
+shape.name = "square"
+shape.numberOfSides = 4
+print(shape.description())
 /*:
  Our ShapeClass is looking good but it is missing something important. We need an initializer to set up the class when an instance is created. We are going to create another class very similar to ShapeClass but this time, we will add the initializer.
  */
@@ -50,6 +41,10 @@ class NamedShapeClass {
         self.name = name
     }
     
+    init(name: String, numberOfSides: Int) {
+        self.name = name
+        self.numberOfSides = numberOfSides
+    }
     func description() -> String {
         return "A shape with \(numberOfSides) sides."
     }
@@ -59,8 +54,10 @@ class NamedShapeClass {
  - Experiment:
  Add another initializer to our 'NamedShapeClass'. Have this initializer take in 'name' and 'numberOfSides' as its parameters. Then test it out by creating an instance of 'NamedShapeClass'.
  */
-
-
+var namedShape = NamedShapeClass(name: "circle")
+print(namedShape.description())
+var otherShape = NamedShapeClass(name: "triangle", numberOfSides: 3)
+print(otherShape.description())
 /*:
  - Callout(Challenge):
  Let's make a new class named 'Square' and we will subclass 'NamedShapeClass'. This is already done for you below to showcase how to subclass.
@@ -72,7 +69,20 @@ class NamedShapeClass {
  */
 
 class Square : NamedShapeClass {
+    var sideLength: Int
     
+    init(name: String, sideLength: Int) {
+        self.sideLength = sideLength
+        super.init(name: name)
+    }
+    
+    func area() -> Int {
+        return self.sideLength*self.sideLength
+    }
+    
+    override func description() -> String {
+        return("A \(name) with \(numberOfSides) sides and sidelength: \(sideLength)")
+    }
 }
 
 /*:
@@ -90,9 +100,30 @@ class Square : NamedShapeClass {
  - Add an instance of Toyota called toyota. Initialize it.
  - Add the drive() method to make sure it prints out "Prius"
  */
+class Car {
+    var model: String
+    
+    init(model: String) {
+        self.model = model
+    }
+    
+    func drive() {
+        print(model)
+    }
+}
 
+var nissan = Car(model: "Rogue")
+nissan.drive()
 
+class Toyota : Car {
+    
+    init() {
+        super.init(model: "Prius")
+    }
+}
 
+var toyota = Toyota()
+toyota.drive()
 /*:
  - Callout(Challenge):
  Earlier, we mentioned that classes are passed by reference and structs are passed by value. Let's try to clarify this with an example.
@@ -102,27 +133,35 @@ First, create a Person class with a name property and a custom initializer that 
 Now create the same Person class but convert it to a struct. Uncomment 'Section B'. What do think will happen? What are the results?
 */
 // Implement Person class under here!
-
+//class Person {
+//    var name = ""
+//
+//    init(name: String) {
+//        self.name = name
+//    }
+//}
 
 // Section A
 //var firstPersonObject = Person(name: "Joe")
 //var secondPersonObject = firstPersonObject
 //secondPersonObject.name = "Jane"
 //
-//print(firstPersonObject.name)
-//print(secondPersonObject.name)
+//print(firstPersonObject.name) // output is "Jane"
+//print(secondPersonObject.name) // output is "Jane"
 
 
 // Implement Person struct under here!
-
+struct Person {
+    var name = ""
+}
 
 // Section B
-//var firstPersonStruct = Person(name: "Joe")
-//var secondPersonStruct = firstPersonStruct
-//secondPersonStruct.name = "Jane"
-//
-//print(firstPersonStruct.name)
-//print(secondPersonStruct.name)
+var firstPersonStruct = Person(name: "Joe")
+var secondPersonStruct = firstPersonStruct
+secondPersonStruct.name = "Jane"
+
+print(firstPersonStruct.name) // output is "Joe"
+print(secondPersonStruct.name) //output is "Jane"
 
 
 //: [Next](@next)
