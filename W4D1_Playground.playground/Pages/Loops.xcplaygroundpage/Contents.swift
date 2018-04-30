@@ -29,20 +29,30 @@ for i in 2...5 {
  - Experiment:
  What's the difference between `2...5` vs `2..<5`?
  */
-
-
+for i in 2..<5 {
+    print("My current Index: \(i)")
+}
+// this one only prints elements up to a max of less than 5 (4), the other one stops right at 5
 /*:
  - Experiment:
   Use a ranged for loop to search through the 'pets' array above for the word 'pig' and print out its index.
  */
-
+for i in 0..<pets.count {
+    if pets[i] == "pig" {
+        print("pig is at index is: \(i)")
+    }
+}
 
 /*:
  - Experiment:
  Create an array of random numbers of your choosing then make a for loop that adds 1 to each number.
  */
+var randomNumbers = [3, 5, 69, 56, 1, 0]
 
-
+for i in 0..<randomNumbers.count {
+    randomNumbers[i] += 1
+}
+print(randomNumbers)
 /*:
  - Experiment:
  Take a look at the example below. Modify the code so that it searches for both the largest and smallest number. Then print out the result.
@@ -58,23 +68,42 @@ let interestingNumbers = [
     "Square": [1, 4, 9, 16, 25],
 ]
 var largest = 0
-for (_, numbers) in interestingNumbers {
+//for (_, numbers) in interestingNumbers {
+//    for number in numbers {
+//        if number > largest {
+//            largest = number
+//        }
+//    }
+//}
+//print(largest)
+var smallest = 0
+for (_,numbers) in interestingNumbers {
     for number in numbers {
         if number > largest {
             largest = number
+            print("largest: \(largest)")
+        } else if smallest == 0 {
+            smallest = number
+        } else if number < smallest {
+            smallest = number
         }
     }
 }
-print(largest)
-
+print("smallest: \(smallest) largest: \(largest)")
 
 /*:
  - Callout(Challenge):
  Given a number `N`, from 0 to `N`, add up all the odd numbers and print out the result.
  ie: N = 5, 1+3+5 = 9
  */
-
-
+var n = 8
+var result = 0
+for i in 0...n {
+    if i % 2 != 0 {
+        result += i
+    }
+}
+print(result)
 /*:
  - Callout(Challenge):
  Given the following array of numbers, determine the frequency of each number using a for loop.
@@ -89,5 +118,24 @@ print(largest)
  */
 
 let numberArray = [1, 4, 5, 5, 5, 3, 2, 1, 4, 2, 2, 2, 1]
+var oneOccurance = 0
+var twoOccurance = 0
+var threeOccurance = 0
+var fourOccurance = 0
+var fiveOccurance = 0
 
+for i in 0..<numberArray.count {
+    if (numberArray[i] == 1){
+        oneOccurance += 1
+    } else if (numberArray[i] == 2){
+        twoOccurance += 1
+    } else if (numberArray[i] == 3){
+        threeOccurance += 1
+    } else if (numberArray[i] == 4){
+        fourOccurance += 1
+    } else if (numberArray[i] == 5){
+        fiveOccurance += 1
+    }
+}
+print("one: \(oneOccurance) two: \(twoOccurance) three: \(threeOccurance) four: \(fourOccurance) five: \(fiveOccurance)")
 //: [Next](@next)
