@@ -19,19 +19,21 @@ myDictionary["Principal"] = 1
  - Experiment:
  Try creating an array and dictionary using `'let'` vs `'var'` then try adding something to them. What do you notice? For the array, you can use a method called 'append' to add something to it.
  */
-
-
+let myLetArray = [1,4,2]
+var myVarArray = [1,6]
+myVarArray.append(2)
+//myLetArray.append(2) error
 /*:
  - Experiment:
  Try creating an empty array with an explicit type `[type]`. What happens when you add a value that isn't the same type?
  */
-
-
+var array:String
+// array.append(2) error
 /*:
  - Experiment:
  Try creating an empty dictionary with an explicit type. `[keyType: valueType]`
  */
-
+var dictionary: [String: Int]
 
 /*:
  - Experiment:
@@ -43,7 +45,15 @@ myDictionary["Principal"] = 1
  - reverse
  - count
  */
-
+var newArray = [3.5, 5.6, 3.13]
+print("New array 3rd element: \(newArray[2])")
+newArray.append(9.9)
+print("New array 4th element: \(newArray[3])")
+newArray.insert(5.0, at: 1)
+newArray.reverse()
+print("newArray count: \(newArray.count)")
+newArray.remove(at: 1)
+newArray.removeAll()
 
 /*:
  - Experiment:
@@ -52,16 +62,22 @@ myDictionary["Principal"] = 1
  - isEmpty
  - count
  */
-
-
+var newDictionary = [2: "hello", 7: "bye", 1: "good afternoon"]
+newDictionary.removeValue(forKey: 7)
+newDictionary.count
 /*:
  - Callout(Challenge):
     Declare a mutable array that is empty and holds `Strings`. On the next few lines, add the following names to the array: John, Karen, Jane
  
     Finally, print out each person's name from the array using their index and string interpolation
 */
-
-
+var stringArray = [""]
+stringArray.append("John")
+stringArray.append("Karen")
+stringArray.append("Jane")
+for name in stringArray {
+    print("\(name)")
+}
 /*:
  - Callout(Challenge):
   Declare a mutable dictionary with the following names and their salaries
@@ -74,6 +90,6 @@ myDictionary["Principal"] = 1
  
     On the next line, add this last person's info: Bob - $45000
  */
-
-
+var anotherDictionary = ["John": 50000, "Jane": 70000, "Karen": 62000]
+anotherDictionary["Bob"] = 45000
 //: [Next](@next)
