@@ -25,8 +25,10 @@ print("Your name is \(name)")
  - Example:
  "Your name is Joe Smith, your age is 35, and your height is 175cm."
  */
-
-
+name = "Colin"
+var age = 24
+var height = 181
+print("Your name is \(name), your age is \(age) and your height is \(height)cm")
 /*:
  - Experiment:
  Math calculations can be included within the "`\()`" such as adding two variables together. Try printing out a sentence using string interpolation and include a calculation.
@@ -51,7 +53,14 @@ if myConditional {
  - Experiment:
   Try creating your own 'if' statement that determines whether a given number is even, odd or zero.
  */
-
+var number = 2
+if number % 2 == 0{
+    print("number is even")
+} else if (number == 0) {
+    print("number is zero")
+} else {
+    print("number is odd")
+}
 
 /*:
  - Experiment:
