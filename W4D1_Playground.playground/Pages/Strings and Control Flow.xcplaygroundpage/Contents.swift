@@ -68,7 +68,7 @@ if number % 2 == 0{
  Try changing the 'vegetable' variable to test the conditions and figure out how they work.
  */
 
-let vegetable = "red pepper"
+let vegetable = "celery"
 var vegetableComment = ""
 switch vegetable {
 case "celery":
@@ -86,13 +86,25 @@ default:
  - Callout(Challenge):
  Create an if/else statement to print out the grammatically correct description of the number of bicycles there are. Declare a 'bicycleCount' variable with any number you wish then cover the conditions for zero bicycles, 1 bicycle, and more than 1 bicycle. ie: 'There are zero bicycles', 'There is 1 bicycle', 'There are 20 bicycles'
  */
+var bicycleCount = 1
 
+if (bicycleCount == 1) {
+    print("There is \(bicycleCount) bicycle")
+} else {
+    print("There are \(bicycleCount) bicycles")
+}
 
 /*:
  - Callout(Challenge):
  Rewrite the above Challenge as a switch statement
  */
-
+bicycleCount = 3
+switch bicycleCount {
+case 1:
+    print("There is \(bicycleCount) bicycle")
+default:
+    print("There are \(bicycleCount) bicycles")
+}
 
 /*:
  - Callout(Challenge):
@@ -102,5 +114,17 @@ default:
  - If the year can be evenly divided by 100 = Is NOT a Leap Year, unless;
  - The year is also evenly divisible by 400 = Is Leap Year
  */
+var year = 2030
 
+if (year % 4 == 0) {
+    print("\(year) is a leap year.")
+} else if(year % 100 == 0) {
+    if (year % 400 == 0) {
+        print("\(year) is a leap year.")
+    } else {
+        print("\(year) is not a leap year.")
+    }
+} else {
+    print("\(year) is not a leap year!")
+}
 //: [Next](@next)
