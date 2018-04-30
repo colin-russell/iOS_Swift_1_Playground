@@ -8,7 +8,17 @@ In our earlier example, we added the 'square' function using our extension. Let'
  \
 Implement the 'square' function and test it out!
 */
+protocol SquareProtocol {
+    func square () -> Self
+}
 
+extension Int : SquareProtocol {
+    func square() -> Int {
+        return self*self
+    }
+}
+let i = 2
+let iSquare = 2.square()
 /*:
  - Callout(Stretch Goal 2):
  Enums can have associated values with them to add extra information. For example, we can represent the different states of a consumer going through a purchasing transaction.
