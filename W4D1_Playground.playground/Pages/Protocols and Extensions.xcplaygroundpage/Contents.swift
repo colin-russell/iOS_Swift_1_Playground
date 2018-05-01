@@ -101,20 +101,79 @@ var mySquaredFloatValue = myFloatValue.square()
  - Callout(Challenge):
  Create an extension on UIColor that converts hex represented colours to a UIColor to use. ex: #FFFFFF would give a UIColor of white (Hint: You can google the algorithm on how to convert hex values to a UIColor)
  */
-
-/*:
- - Callout(Challenge):
- Create an extension on `String` called 'trim'. This will return a `String` that has the whitespace trimmed from the beginning and end. For example: "    hello there  " will return "hellothere"
- */
+import UIKit
+extension UIColor {
+    func colourFromHex(hex: String) -> UIColor? {
+        switch hex {
+        case "#FFFFFF":
+            return UIColor.white
+        case "#000000":
+            return UIColor.black
+        case "#0000FF":
+            return UIColor.blue
+        case "#A52A2A":
+            return UIColor.brown
+        case "#00FFFF":
+            return UIColor.cyan
+        case "#A9A9A9":
+            return UIColor.darkGray
+        case "#808080":
+            return UIColor.gray
+        case "#008000":
+            return UIColor.green
+        case "#D3D3D3":
+            return UIColor.lightGray
+        case "#FF00FF":
+            return UIColor.magenta
+        case "#FFA500":
+            return UIColor.orange
+        case "#800080":
+            return UIColor.purple
+        case "#FF0000":
+            return UIColor.red
+        case "#FFFF00":
+            return UIColor.yellow
+        default:
+            return nil
+        }
+    }
+}
+var myColour = UIColor.white.colourFromHex(hex: "#FFFFFF")
 
 /*:
  - Callout(Challenge):
  Create an extension on String that checks if an email address has a valid format. You can make the rules as strict or as loose as you'd like. Rules can include verifying there are no spaces, there is a '@' present, etc.
  */
+extension String {
+    func isValidEmailFormat() -> Bool {
+        if (self.contains(" ")) {
+            return false
+        } else if (self.contains("@") && self.contains(".")) {
+            return true
+        } else {
+            return false
+        }
+    }
+}
+let email1 = "bob@gmail.com"
+let email2 = "bob @gmail.com"
+let isEmail = email1.isValidEmailFormat()
 
 /*:
  - Callout(Challenge):
  Create an extension on `Double` to add a function that converts the number of seconds into minutes and another function to hours. ex: Given 900 seconds, the minutes returned will be 15 minutes, and the hours returned would be 0.25 hours.
  */
+extension Double {
+    func convertSecondsToMinutes() -> Double {
+        return self/60
+    }
+    func convertSecondsToHours() -> Double {
+        return self/360
+    }
+}
+let seconds = 45.5
+let minutes = seconds.convertSecondsToMinutes()
+let hours = seconds.convertSecondsToHours()
+print(hours)
 
 //: [Next](@next)
